@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="style/bootstrap.css" />
+  <link rel="stylesheet" href="style/bootstrap.min.css">
+  <link rel="stylesheet" href="style/datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="style/style7_1.css">
+
+  <title>7_1 0506</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-primary filters">
+    <div class="dropdown">
+      <select class="select_f" id="filter" onchange="change_filter()">
+        <option style="display:none">Выберите разрез данных</option>
+        <option>Оператор</option>
+        <option>Род вагона</option>
+        <option>Группа груза</option>
+      </select>
+    </div>
+    <form class="form-inline">
+      <div class='input-group date' id='datetimepicker'>
+        <!-- <input type='text' class="form-control" id="calendar" onchange="change_date ()" /> -->
+        <!-- <input type="text" class="form-control" id="calendar" onchange="change_date ()" /> -->
+        <select class="select_d" id="calendar" onchange="change_date()">
+          <option style="display:none"> </option>
+        </select>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </form>
+    <div class="send_excel">
+      <button type="button" class="btn btn-outline-secondary">Отправить в Excel</button>
+    </div>
+  </nav>
+
+  <div class="table7_1" id="tableWrap">
+    <table class="mytable table-hover">
+      <thead>
+        <tr>
+          <th colspan="18">Динамика маржинальной доходности в разрезе номенклатуры грузов, операторов и родов подвижного состава за <nobr class="year"></nobr>, руб./ваг./сут.</th>
+        </tr>
+        <tr>
+          <th width="200px">
+            <nobr id="selected_filter">
+          </th>
+          <th width="130px">январь <nobr class="year"></nobr> г.</th>
+          <th width="130px">февраль <nobr class="year"></nobr> г.</th>
+          <th width="130px">март <nobr class="year"></nobr> г.</th>
+          <th class="background_grey" width="150px">
+            <nobr class="year"></nobr> г. (нарастающий итог за 1 квартал отчетного года нарастающим итогом)
+          </th>
+          <th width="130px">апрель <nobr class="year"></nobr> г.</th>
+          <th width="130px">май <nobr class="year"></nobr> г.</th>
+          <th width="130px">июнь <nobr class="year"></nobr> г.</th>
+          <th class="background_grey" width="150px">
+            <nobr class="year"></nobr> г.(нарастающий итог за 2 квартал отчетного года нарастающим итогом)
+          </th>
+          <th width="130px">июль <nobr class="year"></nobr> г.</th>
+          <th width="130px">август <nobr class="year"></nobr> г.</th>
+          <th width="130px">сентябрь <nobr class="year"></nobr> г.</th>
+          <th class="background_grey" width="150px">
+            <nobr class="year"></nobr> г.(нарастающий итог за 3 квартал отчетного года нарастающим итогом)
+          </th>
+          <th width="130px">октябрь <nobr class="year"></nobr> г.</th>
+          <th width="130px">ноябрь <nobr class="year"></nobr> г.</th>
+          <th width="130px">декабрь <nobr class="year"></nobr> г.</th>
+          <th class="background_grey" width="150px">
+            <nobr class="year"></nobr> г.(нарастающий итог за 4 квартал отчетного года нарастающим итогом)
+          </th>
+          <th class="background_grey" width="150px">
+            <nobr class="year"></nobr> г.(нарастающий итог за месяцы отчетного года, включая отчетный месяц)
+          </th>
+        </tr>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th class="background_grey">5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+          <th class="background_grey">9</th>
+          <th>10</th>
+          <th>11</th>
+          <th>12</th>
+          <th class="background_grey">13</th>
+          <th>14</th>
+          <th>15</th>
+          <th>16</th>
+          <th class="background_grey">17</th>
+          <th class="background_grey">18</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Присваивать класс через json -->
+        <tr class="background_orange">
+          <th>Наименование Оператора подвижного состава 1</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="background_blue">
+          <th>Род вагона 1</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="background_green">
+          <th>Группа Груза 1</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="background_green">
+          <th>Группа Груза 2</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script type="text/javascript" src="script/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="script/bootstrap.min.js"></script>
+  <script type="text/javascript" src="script/html5shiv.js"></script>
+  <script type="text/javascript" src="script/respond.js"></script>
+  <script type="text/javascript" src="script/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="script/moment.js"></script>
+
+  <script type="text/javascript" src="script/script7_1.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="style/bootstrap.css" />
+  <link rel="stylesheet" href="style/bootstrap.min.css">
+  <link rel="stylesheet" href="style/datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="style/style7_2.css">
+
+  <title>7_2</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-primary filters">
+    <div class="dropdown">
+      <select class="select_f" id="filter" onchange="start_work()">
+        <option style="display:none">Выберите тип отчета</option>
+        <option>Детальный</option>
+        <option>Агрегированный</option>
+      </select>
+    </div>
+    <form class="form-inline">
+      <div class='input-group date' id='datetimepicker'>
+        <input type='text' class="form-control" id="calendar" onchange="change_date ()" />
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </form>
+    <div class="send_excel">
+      <button type="button" class="btn btn-outline-secondary">Отправить в Excel</button>
+    </div>
+  </nav>
+
+  <div class="table-detail">
+    <table class="mytable  table-hover">
+      <thead>
+        <tr>
+          <th colspan="43">Повагонная маржинальная доходность <nobr id="date_det"></nobr>, руб./ваг./сут. </th>
+        </tr>
+        <tr>
+          <th>№ вагона</th>
+          <th>№ накладной</th>
+          <th>Дата погрузки</th>
+          <th>Дата выгрузки</th>
+          <th>ГОД погрузки</th>
+          <th>Месяц погрузки</th>
+          <th>Группность</th>
+          <th>Род вагона</th>
+          <th>Подрод вагона</th>
+          <th>Группа груза</th>
+          <th>Груз</th>
+          <th>Вид перевозки</th>
+          <th>Дор отправления</th>
+          <th>Станция отправления</th>
+          <th>Дорога назначения</th>
+          <th>Станция назначения</th>
+          <th>Грузоотправитель</th>
+          <th>Грузополучатель</th>
+          <th>Оператор подвижного состава</th>
+          <th>Собственник подвижного состава</th>
+          <th>Тип перевозки (определяется по п 4. раздела 4.2.7)</th>
+          <th>Признак сдвоенной операции на станции погрузки (да/нет)</th>
+          <th>Признак сдвоенной операции на станции выгрузки (да/нет)</th>
+          <th>Время груженого рейса, часов</th>
+          <th>Время порожних рейсов, отнесенных на данный груженый рейс, часов</th>
+          <th>Время простоя на станции погрузки, часов</th>
+          <th>Время простоя на станции выгрузки, часов</th>
+          <th>Оборот полурейса, часов</th>
+          <th>Вес груза, тонн</th>
+          <th>Тариф груженый по ОАО "РЖД", руб.</th>
+          <th>Тариф груженый по инодорогам, руб.</th>
+          <th>Тариф груженый ВСЕГО, руб.</th>
+          <th>Затраты на порожний рейс по ОАО "РЖД", руб.</th>
+          <th>Затраты на порожний рейс по инодорогам, руб.</th>
+          <th>Затраты на порожний рейс ВСЕГО, руб.</th>
+          <th>Плата за пользование вагоном, руб.</th>
+          <th>Плата за пользование вагоном, руб./ваг./сут.</th>
+          <th>Ставка на предоставление подвижного состава, руб.</th>
+          <th>Ставка на предоставление подвижного состава, КУ % к 10-01</th>
+          <th>Тариф груженого рейса, руб./т</th>
+          <th>Тариф порожнего рейса, руб./т</th>
+          <th>Плата за пользование вагоном, руб./т.</th>
+          <th>Транспортные затраты, руб./т</th>
+        </tr>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+          <th>9</th>
+          <th>10</th>
+          <th>11</th>
+          <th>12</th>
+          <th>13</th>
+          <th>14</th>
+          <th>15</th>
+          <th>16</th>
+          <th>17</th>
+          <th>18</th>
+          <th>19</th>
+          <th>20</th>
+          <th>21</th>
+          <th>22</th>
+          <th>23</th>
+          <th>24</th>
+          <th>25</th>
+          <th>26</th>
+          <th>27</th>
+          <th>28</th>
+          <th>29</th>
+          <th>30</th>
+          <th>31</th>
+          <th>32</th>
+          <th>33</th>
+          <th>34</th>
+          <th>35</th>
+          <th>36</th>
+          <th>37</th>
+          <th>38</th>
+          <th>39</th>
+          <th>40</th>
+          <th>41</th>
+          <th>42</th>
+          <th>43</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+        </tr>
+        <tr>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+        </tr>
+        <tr>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-aggregate">
+    <table class="mytable  table-hover">
+      <thead>
+        <tr>
+          <th colspan="43">Повагонная маржинальная доходность <nobr id="date_agr"></nobr>, руб./ваг./сут. </th>
+        </tr>
+        <tr>
+          <th>ГОД погрузки</th>
+          <th>Месяц погрузки</th>
+          <th>Группность</th>
+          <th>Род вагона</th>
+          <th>Подрод вагона</th>
+          <th>Группа груза</th>
+          <th>Груз</th>
+          <th>Вид перевозки</th>
+          <th>Дор отправления</th>
+          <th>Станция отправления</th>
+          <th>Дорога назначения</th>
+          <th>Станция назначения</th>
+          <th>Грузоотправитель</th>
+          <th>Грузополучатель</th>
+          <th>Оператор подвижного состава</th>
+          <th>Собственник подвижного состава</th>
+          <th>Тип перевозки (определяется по п 4. раздела 4.2.7)</th>
+          <th>Время груженого рейса, часов</th>
+          <th>Время порожних рейсов, отнесенных на данный груженый рейс, часов</th>
+          <th>Время простоя на станции погрузки, часов</th>
+          <th>Время простоя на станции выгрузки, часов</th>
+          <th>Оборот полурейса, часов</th>
+          <th>Вес груза, тонн</th>
+          <th>Тариф груженый по ОАО "РЖД", руб.</th>
+          <th>Тариф груженый по инодорогам, руб.</th>
+          <th>Тариф груженый ВСЕГО, руб.</th>
+          <th>Затраты на порожний рейс по ОАО "РЖД", руб.</th>
+          <th>Затраты на порожний рейс по инодорогам, руб.</th>
+          <th>Затраты на порожний рейс ВСЕГО, руб.</th>
+          <th>Плата за пользование вагоном, руб.</th>
+          <th>Плата за пользование вагоном, руб./ваг./сут.</th>
+          <th>Ставка на предоставление подвижного состава, руб.</th>
+          <th>Ставка на предоставление подвижного состава, КУ % к 10-01</th>
+          <th>Тариф груженого рейса, руб./т</th>
+          <th>Тариф порожнего рейса, руб./т</th>
+          <th>Плата за пользование вагоном, руб./т.</th>
+          <th>Транспортные затраты, руб./т</th>
+        </tr>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+          <th>9</th>
+          <th>10</th>
+          <th>11</th>
+          <th>12</th>
+          <th>13</th>
+          <th>14</th>
+          <th>15</th>
+          <th>16</th>
+          <th>17</th>
+          <th>18</th>
+          <th>19</th>
+          <th>20</th>
+          <th>21</th>
+          <th>22</th>
+          <th>23</th>
+          <th>24</th>
+          <th>25</th>
+          <th>26</th>
+          <th>27</th>
+          <th>28</th>
+          <th>29</th>
+          <th>30</th>
+          <th>31</th>
+          <th>32</th>
+          <th>33</th>
+          <th>34</th>
+          <th>35</th>
+          <th>36</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+          <col width="550px" />
+        </tr>
+        <tr>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+        </tr>
+        <tr>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+          <td>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script type="text/javascript" src="script/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="script/bootstrap.min.js"></script>
+  <!-- <script type="text/javascript" src="script/html5shiv.js"></script>
+  <script type="text/javascript" src="script/respond.js"></script> -->
+  <script type="text/javascript" src="script/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="script/moment.js"></script>
+
+  <script type="text/javascript" src="script/script7_2.js"></script>
+
+
+</body>
+
+</html>

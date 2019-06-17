@@ -1,0 +1,119 @@
+.mytable {
+  table-layout: fixed;
+  position: relative;
+  font-family: RussianRail G Pro;
+  margin: 70px 5px 5px 5px !important;
+}
+
+.table-detail {
+  display: none;
+}
+
+.mytable th, .mytable td {
+  border: 1px solid !important;
+  padding: 2px;
+}
+
+.mytable thead th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.mytable thead tr:nth-child(2) {
+  border-top: double;
+}
+
+.mytable thead tr:nth-child(1), thead tr:nth-child(1) th {
+  border: 0px solid !important;
+}
+
+.background_grey {
+  background-color: #E5E5E5;
+}
+
+.background_orange {
+  background-color: #FFE4D2;
+}
+
+.background_blue {
+  background-color: #D1E8FF;
+}
+
+.background_green {
+  background-color: #E9FFD1;
+}
+
+.filters {
+  position: fixed;
+  display: flex;
+  right: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 1;
+}
+
+.dropdown {
+  margin: 10px 0 0 10px;
+  width: auto;
+}
+
+select {
+  color: black;
+  height: 35px;
+  padding: 6px;
+}
+
+select option {
+  font-family: Arial;
+  padding: 20px;
+  font-size: 14px;
+}
+
+/* .year.disabled {
+  display: none;
+} */
+/* .datepicker table tr td span.new,
+.datepicker table tr td span.old {
+  display: none;
+} */
+.datepicker-switch {
+  visibility: hidden;
+}
+
+.input-group {
+  margin: 10px 0 0 10px;
+}
+
+.input-group .form-control {
+  height: 35px;
+}
+
+span.input-group-addon {
+  background-color: #EBF5FB;
+}
+
+.select_d {
+  border-radius: 4px 0px 0px 4px;
+}
+
+.select_f {
+  border-radius: 4px;
+}
+
+input {
+  color: black;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.send_excel {
+  margin: 10px 0 0 10px;
+  color: black;
+  height: 35px;
+}
+
+.send_excel button {
+  background-color: #EBF5FB;
+}
