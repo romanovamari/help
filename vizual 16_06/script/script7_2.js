@@ -46,7 +46,7 @@ function detail() {
     clear: "Clear"
   };
   var today = new Date();
-  var startDate = new Date(2018, 01, 01);
+  var startDate = new Date(2017, 12, 1);
   var endDate = new Date(today.getFullYear(), String(today.getMonth()).padStart(2, '0'), String(today.getDate()).padStart(2, '0'));
 
   $('#calendar').datepicker({
@@ -63,9 +63,9 @@ function detail() {
     // $(".next").css({
     //   "visibility": "hidden"
     // });
-    $(".disabled").css({
-      "display": "none"
-    });
+    // $(".disabled").css({
+    //   "display": "none"
+    // });
     $(".datepicker-years .table-condensed tbody>tr>td").css({
       "width": "145px"
     });
@@ -79,9 +79,9 @@ function detail() {
       "justify-content": "center",
       "align-items": "center"
     });
-    $(".new").css({
-      "color": "black"
-    });
+    // $(".new").css({
+    //   "color": "black"
+    // });
     $(".year").css({
       "display": "-webkit-flex",
       "flex-wrap": "wrap",
@@ -89,12 +89,15 @@ function detail() {
       "justify-content": "center",
       "align-items": "center"
     });
-    $(".disabled").css({
+    $(".year + .disabled").css({
       "display": "none"
     });
-    $(".old").css({
-      "visibility": "hidden"
+    $(".month + .disabled").css({
+      "display": "none"
     });
+    // $(".old").css({
+    //   "visibility": "hidden"
+    // });
     $(".datepicker-switch :nth-child(3)").css({
       "visibility": "hidden"
     });
